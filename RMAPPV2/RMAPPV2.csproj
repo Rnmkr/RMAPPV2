@@ -205,5 +205,10 @@
     <Resource Include="Resources\deletextwhite.png" />
     <Resource Include="Resources\nextwhite.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\backwhite.png" />
+    <Resource Include="Resources\deletewhite.png" />
+    <Resource Include="Resources\printerwhite.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

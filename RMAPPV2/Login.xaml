@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     d:DesignHeight="768"
     d:DesignWidth="1366"
-    PreviewKeyDown="Page_PreviewKeyDown"
+    Loaded="Page_Loaded"
     Title="Login">
 
     <Grid
@@ -35,7 +35,7 @@
         <Label
             Grid.Row="1"
             Name="LabelHora"
-            Content="{Binding Time}"
+            Content="08:55"
             Margin="0"
             VerticalAlignment="Center"
             HorizontalContentAlignment="Center"
@@ -50,16 +50,17 @@
             Name="TextBoxEstadoConexion"
             Text="CONECTANDO..."
             IsEnabled="False"
-            Margin="10,0,10,134"
+            Margin="0"
             FontWeight="Bold"
             FontSize="48"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             Foreground="White"
             Background="{x:Null}"
-            VerticalAlignment="Bottom"
-            BorderBrush="{x:Null}" />
-        <Button
+            VerticalAlignment="Center"
+            BorderBrush="{x:Null}"
+            HorizontalAlignment="Center" />
+        <!--<Button
             Grid.Row="2"
             Name="ButtonIngresar"
             HorizontalAlignment="Right"
@@ -75,8 +76,8 @@
                 Source="/RMAPPV2;component/Resources/nextwhite.png"
                 Width="70"
                 Height="70" />
-        </Button>
-        <Button
+        </Button>-->
+        <!--<Button
             Grid.Row="2"
             Name="ButtonBorrarPassword"
             HorizontalAlignment="Center"
@@ -121,11 +122,13 @@
                 VerticalAlignment="Center"
                 Width="366"
                 FontFamily="Arial" />
-        </Border>
+        </Border>-->
         <Label
+            Grid.Row="3"
+            Foreground="Gray"
             Name="LabelVersion"
-            HorizontalAlignment="Left"
-            Margin="10,0,0,25"
+            HorizontalAlignment="Right"
+            Margin="0,0,0,16"
             Content="VER. 0.0.0.0"
             VerticalAlignment="Bottom"
             FontSize="10" />

@@ -1,25 +1,118 @@
-﻿<Page x:Class="RMAPPV2.MenuFinal"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:RMAPPV2"
-      mc:Ignorable="d" 
-      d:DesignHeight="768" d:DesignWidth="1366"
-      Title="MenuFinal">
+﻿<Page
+    x:Class="RMAPPV2.MenuFinal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:RMAPPV2"
+    mc:Ignorable="d"
+    d:DesignHeight="768"
+    d:DesignWidth="1366"
+    Title="MenuFinal">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="768" Width="1366">
-        <Border Margin="10,14,0,0" VerticalAlignment="Top" BorderThickness="5" CornerRadius="5" BorderBrush="Black" HorizontalAlignment="Left" Width="136" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}">
-            <Label Name="LabelLegajo" Content="{Binding Source={x:Static local:Datos.LegajoUsuario}, Mode=OneWay}" Margin="0" FontSize="24" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{x:Null}" Width="126" Height="42"/>
+    <Grid
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Height="768"
+        Width="1366">
+        <Border
+            Margin="10,14,0,0"
+            VerticalAlignment="Top"
+            BorderThickness="5"
+            CornerRadius="5"
+            BorderBrush="Black"
+            HorizontalAlignment="Left"
+            Width="136"
+            Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}">
+            <Label
+                Name="LabelLegajo"
+                Content="{Binding Source={x:Static local:Datos.LegajoUsuario}, Mode=OneWay}"
+                Margin="0"
+                FontSize="24"
+                FontWeight="Bold"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Background="{x:Null}"
+                Width="126"
+                Height="42" />
         </Border>
-        <Border Margin="151,14,141,0" VerticalAlignment="Top" BorderThickness="5" CornerRadius="5" BorderBrush="Black" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}">
-            <Label Name="LabelUsuario" Content="{Binding Source={x:Static local:Datos.Usuario}, Mode=OneWay}" Margin="0" FontSize="24" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="42"/>
+        <Border
+            Margin="151,14,141,0"
+            VerticalAlignment="Top"
+            BorderThickness="5"
+            CornerRadius="5"
+            BorderBrush="Black"
+            Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}">
+            <Label
+                Name="LabelUsuario"
+                Content="{Binding Source={x:Static local:Datos.Usuario}, Mode=OneWay}"
+                Margin="0"
+                FontSize="24"
+                FontWeight="Bold"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Height="42" />
         </Border>
-        <Button Content="SALIR" Click="ButtonHome_Click" Margin="0,14,10,0" FontSize="24" FontWeight="Bold" Style="{DynamicResource ResourceKey=RoundedButtonKeypad}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="0" Width="126" Height="52"/>
-        <Label Name="LabelMensaje" Content="" Margin="0,0,0,25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="48" FontWeight="Bold"/>
-        <Button Name="ButtonDeNuevo" Content="" HorizontalAlignment="Left" Style="{DynamicResource ResourceKey=RoundedButtonKeypad}" Margin="70,112,0,0" VerticalAlignment="Top" Width="1226" Height="120" FontWeight="Bold" FontSize="36" Click="ButtonDeNuevo_Click"/>
-        <Button Name="ButtonOtroDistinto" Content="CAMBIAR OTRO COMPONENTE DEL MISMO PEDIDO" HorizontalAlignment="Left" Style="{DynamicResource ResourceKey=RoundedButtonKeypad}" Margin="70,271,0,0" VerticalAlignment="Top" Width="1226" Height="120" FontWeight="Bold" FontSize="36" Click="ButtonOtroDistinto_Click"/>
-        <Button Name="ButtonDesdeCero" Content="EMPEZAR DE NUEVO" HorizontalAlignment="Left" Style="{DynamicResource ResourceKey=RoundedButtonKeypad}" Margin="70,432,0,0" VerticalAlignment="Top" Width="1226" Height="120" FontWeight="Bold" FontSize="36" Click="ButtonDesdeCero_Click"/>
+        <Button
+            Content="SALIR"
+            Click="ButtonHome_Click"
+            Margin="0,14,10,0"
+            FontSize="24"
+            FontWeight="Bold"
+            Style="{DynamicResource ResourceKey=RoundedButtonKeypad}"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Padding="0"
+            Width="126"
+            Height="52" />
+        <Label
+            Name="LabelMensaje"
+            Content=""
+            Margin="0,0,0,25"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            FontSize="48"
+            FontWeight="Bold" />
+        <Button
+            Name="ButtonDeNuevo"
+            Content=""
+            HorizontalAlignment="Left"
+            Style="{DynamicResource ResourceKey=RoundedButtonKeypad}"
+            Margin="70,112,0,0"
+            VerticalAlignment="Top"
+            Width="1226"
+            Height="120"
+            FontWeight="Bold"
+            FontSize="36"
+            Click="ButtonDeNuevo_Click" />
+        <Button
+            Name="ButtonOtroDistinto"
+            Content="CAMBIAR OTRO COMPONENTE DEL MISMO PEDIDO"
+            HorizontalAlignment="Left"
+            Style="{DynamicResource ResourceKey=RoundedButtonKeypad}"
+            Margin="70,271,0,0"
+            VerticalAlignment="Top"
+            Width="1226"
+            Height="120"
+            FontWeight="Bold"
+            FontSize="36"
+            Click="ButtonOtroDistinto_Click" />
+        <Button
+            Name="ButtonDesdeCero"
+            Content="EMPEZAR DE NUEVO"
+            HorizontalAlignment="Left"
+            Style="{DynamicResource ResourceKey=RoundedButtonKeypad}"
+            Margin="70,432,0,0"
+            VerticalAlignment="Top"
+            Width="1226"
+            Height="120"
+            FontWeight="Bold"
+            FontSize="36"
+            Click="ButtonDesdeCero_Click" />
         <!--<Button Name="ButtonReimprimir"  Content="VOLVER A IMPRIMIR EL TICKET" HorizontalAlignment="Left" Style="{DynamicResource ResourceKey=RoundedButtonKeypad}" Margin="70,593,0,0" VerticalAlignment="Top" Width="1226" Height="120" FontWeight="Bold" FontSize="36" Click="ButtonReimprimir_Click"/>-->
     </Grid>
 </Page>
