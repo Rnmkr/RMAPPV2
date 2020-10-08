@@ -17,11 +17,15 @@
         Width="1366"
         Height="768">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition
+                Height="auto" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="auto" />
         </Grid.RowDefinitions>
         <Label
+            Name="lblTitle"
             Grid.Row="0"
             Content="AUTORIZACIÓN DE CAMBIO"
             Margin="0"
@@ -32,27 +36,56 @@
             VerticalAlignment="Center"
             Foreground="DimGray"
             HorizontalAlignment="Center" />
-        <Label
+        <StackPanel
             Grid.Row="1"
-            Name="LabelHora"
-            Content="08:55"
-            Margin="0"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            FontWeight="Bold"
-            VerticalContentAlignment="Center"
-            FontSize="500"
-            Foreground="White"
+            Orientation="Horizontal"
             HorizontalAlignment="Center"
-            FontFamily="Arial" />
-        <TextBox
+            VerticalAlignment="Center">
+            <Label
+                Name="lblHora"
+                Content="{Binding Hora}"
+                Margin="0"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                FontWeight="Bold"
+                VerticalContentAlignment="Center"
+                FontSize="500"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                FontFamily="Arial" />
+            <Label
+                Name="lblDots"
+                Content=":"
+                Margin="0"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                FontWeight="Bold"
+                VerticalContentAlignment="Center"
+                FontSize="500"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                FontFamily="Arial" />
+            <Label
+                Name="lblMinutos"
+                Content="{Binding Minutos}"
+                Margin="0"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                FontWeight="Bold"
+                VerticalContentAlignment="Center"
+                FontSize="500"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                FontFamily="Arial" />
+        </StackPanel>
+        <Label
             Grid.Row="2"
             Name="TextBoxEstadoConexion"
-            Text="CONECTANDO..."
+            Content="CONECTANDO..."
             IsEnabled="False"
             Margin="0"
             FontWeight="Bold"
-            FontSize="48"
+            FontSize="36"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             Foreground="White"

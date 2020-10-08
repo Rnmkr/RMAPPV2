@@ -10,8 +10,10 @@ namespace RMAPPV2
     public class Clock : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string _date = DateTime.Now.ToShortDateString();
-        private string _time = DateTime.Now.ToShortTimeString();
+        private string _date;
+        private string _time;
+        private string _horas;
+        private string _minutos;
         private bool _isServerOnline = false;
 
         Clock()
@@ -20,6 +22,8 @@ namespace RMAPPV2
             timer.Interval = TimeSpan.FromSeconds(60);
             timer.Tick += Tickevent;
             timer.Start();
+            Date = DateTime.Now.ToShortDateString();
+            Time = DateTime.Now.ToShortTimeString();
         }
 
         public string Date
@@ -43,7 +47,35 @@ namespace RMAPPV2
                 if (_time != value)
                 {
                     _time = value;
+                    Hora = Time.Substring(0, 2);
+                    Minutos = Time.Substring(3, 2);
                     RaisePropertyChanged("Time");
+                }
+            }
+        }
+
+        public string Hora
+        {
+            get { return _horas; }
+            set
+            {
+                if (_horas != value)
+                {
+                    _horas = value;
+                    RaisePropertyChanged("Hora");
+                }
+            }
+        }
+
+        public string Minutos
+        {
+            get { return _minutos; }
+            set
+            {
+                if (_minutos != value)
+                {
+                    _minutos = value;
+                    RaisePropertyChanged("Minutos");
                 }
             }
         }

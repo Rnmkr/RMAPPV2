@@ -27,7 +27,8 @@ namespace RMAPPV2
             ReadNewKeyInputTimer.Tick += ReadNewKeyInputTimer_Tick;
             LabelVersion.Content = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             Datos.EstoyEnLoginPage = true;
-            LabelHora.DataContext = Clock.Instance;
+            lblHora.DataContext = Clock.Instance;
+            lblMinutos.DataContext = Clock.Instance;
             TextBoxEstadoConexion.DataContext = Clock.Instance;
             Clock.Instance.PropertyChanged += IsServerOnlineEventHandler; //event handler suscription
             //PasswordBoxLogin.ContextMenu = null;
@@ -36,6 +37,22 @@ namespace RMAPPV2
             //ButtonIngresar.Visibility = Visibility.Hidden;
             ComprobarUltimaConexion();
             CargarListaUsuarios();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += SecondTickevent;
+            timer.Start();
+        }
+
+        private void SecondTickevent(object sender, EventArgs e)
+        {
+            if (lblDots.Visibility == Visibility.Visible)
+            {
+                lblDots.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblDots.Visibility = Visibility.Visible;
+            }
         }
 
         private void ReadNewKeyInputTimer_Tick(object sender, EventArgs e)
@@ -43,7 +60,8 @@ namespace RMAPPV2
             ReadNewKeyInputTimer.Stop();
             KeyInput = string.Empty;
             TextBoxEstadoConexion.Foreground = Brushes.Green;
-            TextBoxEstadoConexion.Text = "ESCANEE SU CODIGO";
+            lblTitle.Foreground = Brushes.Green;
+            TextBoxEstadoConexion.Content = "ESCANEE SU CODIGO";
         }
 
         private void IsServerOnlineEventHandler(object sender, PropertyChangedEventArgs e)
@@ -59,7 +77,8 @@ namespace RMAPPV2
             //PasswordBoxLogin.Password = null;
             //PasswordBoxLogin.Focus();
             TextBoxEstadoConexion.Foreground = Brushes.Green;
-            TextBoxEstadoConexion.Text = "ESCANEE SU CODIGO";
+            lblTitle.Foreground = Brushes.Green;
+            TextBoxEstadoConexion.Content = "ESCANEE SU CODIGO";
         }
 
         private void DesactivarIngreso()
@@ -68,7 +87,8 @@ namespace RMAPPV2
             //ButtonIngresar.Visibility = Visibility.Hidden;
             //BorderOnPassword.Visibility = Visibility.Hidden;
             TextBoxEstadoConexion.Foreground = Brushes.Red;
-            TextBoxEstadoConexion.Text = "DESCONECTADO";
+            lblTitle.Foreground = Brushes.Red;
+            TextBoxEstadoConexion.Content = "DESCONECTADO";
         }
 
         private void ButtonBorrarPassword_Click(object sender, RoutedEventArgs e)
@@ -155,7 +175,7 @@ namespace RMAPPV2
                     else
                     {
                         TextBoxEstadoConexion.Foreground = Brushes.Yellow;
-                        TextBoxEstadoConexion.Text = "¡NO SE ENCONTRO EL USUARIO!";
+                        TextBoxEstadoConexion.Content = "¡NO SE ENCONTRO EL USUARIO!";
                         return false;
                     }
                 }
@@ -163,7 +183,8 @@ namespace RMAPPV2
             catch (InvalidOperationException)
             {
                 TextBoxEstadoConexion.Foreground = Brushes.Red;
-                TextBoxEstadoConexion.Text = "¡ERROR BUSCANDO USUARIO!";
+                lblTitle.Foreground = Brushes.Red;
+                TextBoxEstadoConexion.Content = "¡ERROR BUSCANDO USUARIO!";
                 return false;
             }
         }
@@ -209,7 +230,7 @@ namespace RMAPPV2
 
         private void Page_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            TextBoxEstadoConexion.Text = "IDENTIFICANDO...";
+            TextBoxEstadoConexion.Content = "IDENTIFICANDO...";
             var key = e.Key.ToString();
 
             if (!OnlyDigitsRegex.IsMatch(key))
