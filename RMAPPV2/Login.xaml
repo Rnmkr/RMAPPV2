@@ -25,7 +25,7 @@
                 Height="auto" />
         </Grid.RowDefinitions>
         <Label
-            Background="CornflowerBlue"
+            Background="#FF778899"
             Name="lblTitle"
             Grid.Row="0"
             Content="AUTORIZACIÓN DE CAMBIO"
@@ -89,7 +89,7 @@
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             Foreground="Wheat"
-            Background="CornflowerBlue"
+            Background="#FF778899"
             BorderBrush="{x:Null}" />
         <!--<Button
             Grid.Row="2"
