@@ -25,6 +25,7 @@
                 Height="auto" />
         </Grid.RowDefinitions>
         <Label
+            Background="CornflowerBlue"
             Name="lblTitle"
             Grid.Row="0"
             Content="AUTORIZACIÓN DE CAMBIO"
@@ -33,9 +34,8 @@
             VerticalContentAlignment="Center"
             FontSize="36"
             FontWeight="Bold"
-            VerticalAlignment="Center"
-            Foreground="DimGray"
-            HorizontalAlignment="Center" />
+            Foreground="Wheat" />
+        
         <StackPanel
             Grid.Row="1"
             Orientation="Horizontal"
@@ -88,11 +88,9 @@
             FontSize="36"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            Foreground="White"
-            Background="{x:Null}"
-            VerticalAlignment="Center"
-            BorderBrush="{x:Null}"
-            HorizontalAlignment="Center" />
+            Foreground="Wheat"
+            Background="CornflowerBlue"
+            BorderBrush="{x:Null}" />
         <!--<Button
             Grid.Row="2"
             Name="ButtonIngresar"
@@ -157,13 +155,13 @@
                 FontFamily="Arial" />
         </Border>-->
         <Label
-            Grid.Row="3"
-            Foreground="Gray"
+            Grid.Row="2"
+            Foreground="Wheat"
             Name="LabelVersion"
             HorizontalAlignment="Right"
-            Margin="0,0,0,16"
+            Margin="0,0,16,0"
             Content="VER. 0.0.0.0"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Center"
             FontSize="10" />
     </Grid>
 </Page>
