@@ -71,6 +71,21 @@ namespace RMAPPV2
 
 
 
+        private void TestImpresion()
+        {
+            Datos.ApellidoUsuario = "TEST DE IMPRESION";
+            Datos.NombreUsuario = "TEST DE IMPRESION";
+            Datos.NumeroPedido = "00000";
+            Datos.NumeroArticulo = "00000";
+            Datos.Producto = "TEST DE IMPRESION";
+            Datos.Categoria = "TEST DE IMPRESION";
+            Datos.Version = "TEST DE IMPRESION";
+            Datos.Descripcion = "TEST DE IMPRESION";
+            Datos.Falla = "TEST DE IMPRESION";
+            Datos.Observacion = "TEST DE IMPRESION";
+        }
+
+
         private void ActivarIngreso()
         {
             //BorderOnPassword.Visibility = Visibility.Visible;
@@ -228,8 +243,33 @@ namespace RMAPPV2
             System.Diagnostics.Process.Start("shutdown.exe", "-r -t 0");
         }
 
+        private void Apagar()
+        {
+            System.Diagnostics.Process.Start("shutdown.exe", "-s -t 0");
+        }
+
+        private void Cerrar()
+        {
+            Application.Current.Shutdown();
+        }
+
         private void Page_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            /////
+            //KeyInput = "23770";
+            //if (KeyInput.Length == 5)
+            //{
+            //    if (ObtenerUsuario())
+            //    {
+            //        ReadNewKeyInputTimer.Stop();
+            //        Datos.EstoyEnLoginPage = false;
+            //        ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new PedidoArticulo());
+            //    }
+
+            //    ReadNewKeyInputTimer.Start();
+            //}
+            /////
+            ReadNewKeyInputTimer.Start();
             TextBoxEstadoConexion.Content = "IDENTIFICANDO...";
             var key = e.Key.ToString();
 
@@ -247,14 +287,37 @@ namespace RMAPPV2
 
             if (KeyInput.Length == 5)
             {
+                if (KeyInput == "00000")
+                {
+                    Reiniciar();
+                    return;
+                }
+
+                if (KeyInput == "00001")
+                {
+                    Apagar();
+                    return;
+                }
+
+                if (KeyInput == "00002")
+                {
+                    Cerrar();
+                    return;
+                }
+
+                if (KeyInput == "00003")
+                {
+                    TestImpresion();
+                    ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Imprimir());
+                    return;
+                }
+
                 if (ObtenerUsuario())
                 {
                     ReadNewKeyInputTimer.Stop();
                     Datos.EstoyEnLoginPage = false;
                     ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new PedidoArticulo());
                 }
-
-                ReadNewKeyInputTimer.Start();
             }
 
         }

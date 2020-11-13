@@ -128,6 +128,7 @@
         </Button>
 
         <Label
+            Foreground="White"
             Content="SELECCIONE VERSION"
             HorizontalAlignment="Left"
             Margin="70,98,0,0"

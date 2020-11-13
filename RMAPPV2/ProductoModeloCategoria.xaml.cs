@@ -20,6 +20,38 @@ namespace RMAPPV2
             ListBoxCategorias.ScrollIntoView(ListBoxCategorias.SelectedItem);
         }
 
+        private void ListBoxProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Datos.IndexProducto = ListBoxProductos.SelectedIndex;
+            Datos.Producto = ListBoxProductos.SelectedValue.ToString();
+            Datos.IndexModelo = -1;
+            Datos.IndexCategoria = -1;
+            ListBoxModelos.ItemsSource = null;
+            ListBoxCategorias.ItemsSource = null;
+            CargarModelos();
+        }
+
+        private void ListBoxModelo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Datos.IndexModelo = ListBoxModelos.SelectedIndex;
+            if (ListBoxModelos.SelectedValue != null)
+            {
+                Datos.Modelo = ListBoxModelos.SelectedValue.ToString();
+            }
+            Datos.IndexCategoria = -1;
+            ListBoxCategorias.ItemsSource = null;
+            CargarCategorias();
+        }
+
+        private void ListBoxCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Datos.IndexCategoria = ListBoxCategorias.SelectedIndex;
+            if (ListBoxCategorias.SelectedValue != null)
+            {
+                Datos.Categoria = ListBoxCategorias.SelectedValue.ToString();
+            }
+        }
+
         private void ButtonHome_Click(object sender, RoutedEventArgs e)
         {
             Datos.ResetDatos();
@@ -57,9 +89,9 @@ namespace RMAPPV2
             {
                 using (new WaitCursor())
                 {
-                Datos.IQItemsFiltrados = Datos.IQItemsFiltrados.Where(w => w.CategoriaItem == ListBoxCategorias.SelectedValue.ToString()).Select(s => s);
-                Datos.ListVersiones = Datos.IQItemsFiltrados.Select(s => s.VersionItem).ToList();
-                ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Version());
+                    Datos.IQItemsFiltrados = Datos.IQItemsFiltrados.Where(w => w.CategoriaItem == ListBoxCategorias.SelectedValue.ToString()).Select(s => s);
+                    Datos.ListVersiones = Datos.IQItemsFiltrados.Select(s => s.VersionItem).ToList();
+                    ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Version());
                 }
             }
         }
@@ -68,8 +100,12 @@ namespace RMAPPV2
         {
             using (new WaitCursor())
             {
-                Datos.ListModelos = Datos.IQTotalItems.Where(w => w.TipoProducto == ListBoxProductos.SelectedValue.ToString()).Select(s => s.ModeloProducto).Distinct().ToList();
-                ListBoxModelos.ItemsSource = Datos.ListModelos; // reemplazar por binding
+                if (Datos.Producto != null)
+                {
+                    Datos.ListModelos = Datos.IQTotalItems.Where(w => w.TipoProducto == Datos.Producto).Select(s => s.ModeloProducto).Distinct().ToList();
+                    //MessageBox.Show("CargarModelos(): " + ListBoxModelos.Items.Count);
+                    ListBoxModelos.ItemsSource = Datos.ListModelos; // reemplazar por binding
+                }
             }
         }
 
@@ -77,32 +113,14 @@ namespace RMAPPV2
         {
             using (new WaitCursor())
             {
-                Datos.IQItemsFiltrados = Datos.IQTotalItems.Where(w => w.ModeloProducto == ListBoxModelos.SelectedValue.ToString()).Select(s => s);
-                Datos.ListCategorias = Datos.IQItemsFiltrados.Select(s => s.CategoriaItem).Distinct().ToList();
-                ListBoxCategorias.ItemsSource = Datos.ListCategorias; // reemplazar por binding
+                if (Datos.Modelo != null)
+                {
+                    Datos.IQItemsFiltrados = Datos.IQTotalItems.Where(w => w.ModeloProducto == Datos.Modelo).Select(s => s);
+                    Datos.ListCategorias = Datos.IQItemsFiltrados.Select(s => s.CategoriaItem).Distinct().ToList();
+                    ListBoxCategorias.ItemsSource = Datos.ListCategorias; // reemplazar por binding
+                }
             }
         }
-
-        private void ListBoxProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Datos.IndexProducto = ListBoxProductos.SelectedIndex;
-            Datos.Producto = ListBoxProductos.SelectedValue.ToString();
-            CargarModelos();
-        }
-
-        private void ListBoxModelo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Datos.IndexModelo = ListBoxModelos.SelectedIndex;
-            Datos.Modelo = ListBoxModelos.SelectedValue.ToString();
-            CargarCategorias();
-        }
-
-        private void ListBoxCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Datos.IndexCategoria = ListBoxCategorias.SelectedIndex;
-            Datos.Categoria = ListBoxCategorias.SelectedValue.ToString();
-        }
-
 
         private void ResetVista()
         {

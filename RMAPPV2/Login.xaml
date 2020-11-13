@@ -35,7 +35,7 @@
             FontSize="36"
             FontWeight="Bold"
             Foreground="Wheat" />
-        
+
         <StackPanel
             Grid.Row="1"
             Orientation="Horizontal"
