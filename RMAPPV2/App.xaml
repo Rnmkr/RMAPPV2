@@ -38,7 +38,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <EventTrigger RoutedEvent="PreviewMouseDown">
-                                <SoundPlayerAction Source="/RMAPPV2;component/Resources/click.wav"/>
+                                <SoundPlayerAction Source="/RMAPPV2;component/Resources/lv_click.wav"/>
                             </EventTrigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="RenderTransform" TargetName="border">
@@ -104,7 +104,7 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
-                                <SoundPlayerAction Source="/RMAPPV2;component/Resources/click.wav"/>
+                                <SoundPlayerAction Source="/RMAPPV2;component/Resources/lv_click.wav"/>
                                 </EventTrigger>
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter Property="RenderTransform" TargetName="border">

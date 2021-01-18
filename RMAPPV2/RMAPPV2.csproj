@@ -210,5 +210,8 @@
     <Resource Include="Resources\deletewhite.png" />
     <Resource Include="Resources\printerwhite.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\lv_click.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
