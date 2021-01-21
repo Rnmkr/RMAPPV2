@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -20,6 +21,7 @@ namespace RMAPPV2
         private Regex OnlyDigitsRegex = new Regex(@"^[D]\d$");
         private string KeyInput;
         private DispatcherTimer ReadNewKeyInputTimer = new DispatcherTimer();
+        private int SyncTimeCounter = 0;
         public Login()
         {
             InitializeComponent();
@@ -52,6 +54,29 @@ namespace RMAPPV2
             else
             {
                 lblDots.Visibility = Visibility.Visible;
+            }
+            //actualiza el reloj cada 5 minutos
+            SyncTimeCounter++;
+            if (SyncTimeCounter == 300)
+            {
+                SyncTime();
+                SyncTimeCounter = 0;
+            }
+        }
+
+        private void SyncTime()
+        {
+            try
+            {
+                Process p = new Process();
+                p.StartInfo.UseShellExecute = true;
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.FileName = "NET";
+                p.StartInfo.Arguments = "TIME \\\\BUBBA /SET /YES";
+                p.Start();
+            }
+            catch (Exception)
+            {
             }
         }
 
